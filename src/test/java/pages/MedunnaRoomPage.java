@@ -41,7 +41,7 @@ public class MedunnaRoomPage {
     public List<WebElement> roomNumberlist;
 
     @FindBy(xpath = "//tbody/tr[1]/td[1]")
-    public WebElement fistId;
+    public WebElement firstId;
 
     @FindBy(xpath = "//div[@role='alert']")
     public WebElement alert;

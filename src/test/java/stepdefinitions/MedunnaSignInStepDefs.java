@@ -10,7 +10,6 @@ import utilities.Driver;
 public class MedunnaSignInStepDefs {
     MedunnaHomePage medunnaHomePage = new MedunnaHomePage();
     MedunnaLoginPage medunnaLoginPage = new MedunnaLoginPage();
-    MedunnaRoomPage medunnaRoomPage = new MedunnaRoomPage();
 
     @Given("{string} web adresine gidilir")
     public void web_adresine_gidilir(String url) {

@@ -11,7 +11,6 @@ public class MedunnaRoomStepDefs {
     MedunnaHomePage medunnaHomePage = new MedunnaHomePage();
     MedunnaRoomPage medunnaRoomPage = new MedunnaRoomPage();
     public static int odaNo;
-    public static String roomId;
 
     @When("Items&Titles secenegine tiklanir")
     public void ıtems_titles_secenegine_tiklanir() {
@@ -57,8 +56,6 @@ public class MedunnaRoomStepDefs {
     @When("Save butonuna tiklanir")
     public void save_butonuna_tiklanir() throws InterruptedException {
         medunnaRoomPage.saveSubmitButton.click();
-        Thread.sleep(1000);
-        roomId = medunnaRoomPage.alert.getText().replaceAll("[^0-9]", "");
     }
 
     @When("Uygulama kapatilir")
