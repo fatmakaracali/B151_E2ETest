@@ -6,9 +6,13 @@ import io.cucumber.java.en.*;
 import io.restassured.response.Response;
 import pojos.RoomPojo;
 
+import java.util.List;
+
 import static base_url.MedunnaBaseUrl.spec;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
+import static stepdefinitions.MedunnaRoomStepDefs.odaId;
+import static stepdefinitions.MedunnaRoomStepDefs.odaNo;
 
 
 public class ApiRoomStepDefs {
@@ -19,11 +23,20 @@ public class ApiRoomStepDefs {
     @Given("Get Request gonderilir")
     public void get_request_gonderilir() {
 
+        //Oda ID'sini alma
+        spec.pathParams("first", "api", "second", "rooms")
+                .queryParam("sort", "createdDate,desc");
+        Response response1 = given(spec).when().get("{first}/{second}");
+        Object roomId = response1.jsonPath().getList("findAll{it.roomNumber==" + odaNo + "}.id").get(0);
+        System.out.println("Room ID: " + roomId);
+
+
+
         //Set the Url
-        spec.pathParams("first", "api", "second", "rooms", "third", 72086);
+        spec.pathParams("first", "api", "second", "rooms", "third", roomId);
 
         // Set the expected data
-        expectedData  = new RoomPojo(506209, "TWIN", false, 200.00, "cincik gibi oda");
+        expectedData = new RoomPojo(odaNo, "SUITE", true, 123.00, "End To End Test için oluşturulmuştur");
 
 
         // Send the request and get the response

@@ -12,6 +12,7 @@ public class MedunnaRoomStepDefs {
     MedunnaHomePage medunnaHomePage = new MedunnaHomePage();
     MedunnaRoomPage medunnaRoomPage = new MedunnaRoomPage();
     public static int odaNo;
+    public static String odaId;
 
     @When("Items&Titles secenegine tiklanir")
     public void ıtems_titles_secenegine_tiklanir() {
@@ -58,6 +59,9 @@ public class MedunnaRoomStepDefs {
     public void save_butonuna_tiklanir() throws InterruptedException {
       //  medunnaRoomPage.saveSubmitButton.click();
         ReusableMethods.click(medunnaRoomPage.saveSubmitButton);
+        ReusableMethods.visibleWait(medunnaRoomPage.alert,2);
+        odaId =  medunnaRoomPage.alert.getText().replaceAll("[^0-9]","");
+        System.out.println(odaId);
     }
 
     @When("Uygulama kapatilir")
